@@ -70,3 +70,25 @@ stages:
     - path: models/census_model_v1
       md5: d402466c07a73542f408f8e4935ad6d9
       size: 312368
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/test_data.csv
+      md5: e39c99915f182ff8b4524567ee030c03
+      size: 710749
+    - path: models/census_model_v1
+      md5: d402466c07a73542f408f8e4935ad6d9
+      size: 312368
+    - path: src/evaluate.py
+      md5: f9f9785f9541e2c59f282bf87819b7db
+      size: 3199
+    - path: src/train.py
+      md5: ceb12fdff54f40a6468984add80c149f
+      size: 4748
+    outs:
+    - path: reporting/metrics.json
+      md5: 08922985ee3dba7bfb299f576af9fff7
+      size: 89
+    - path: reporting/slice_metrics.json
+      md5: db554d67cee9e28b1b43d4e5841a35c9
+      size: 8792
