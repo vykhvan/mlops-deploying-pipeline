@@ -1,0 +1,11 @@
+stages:
+  processing:
+    cmd: python src/processing.py data/census.csv
+    deps:
+    - data/census.csv
+    - src/processing.py
+    params:
+    - processing.primary_data
+    - processing.raw_data
+    outs:
+    - data/cleaned_census.csv
