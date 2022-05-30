@@ -17,3 +17,26 @@ stages:
     - path: data/cleaned_census.csv
       md5: 828e9d5f21243c10e631a683d3f87d54
       size: 3551169
+  segregation:
+    cmd: python src/segregation.py
+    deps:
+    - path: data/cleaned_census.csv
+      md5: 828e9d5f21243c10e631a683d3f87d54
+      size: 3551169
+    - path: src/segregation.py
+      md5: afef4641c3c001c93b1cbcdf22cc8fd2
+      size: 1797
+    params:
+      params.yaml:
+        processing.primary_data: data/cleaned_census.csv
+        segregation.random_state: 24
+        segregation.test_data: data/test_data.csv
+        segregation.test_size: 0.2
+        segregation.train_data: data/train_data.csv
+    outs:
+    - path: data/test_data.csv
+      md5: e39c99915f182ff8b4524567ee030c03
+      size: 710749
+    - path: data/train_data.csv
+      md5: b24080f15b4d90855cfe7bba39391780
+      size: 2840574
