@@ -40,3 +40,33 @@ stages:
     - path: data/train_data.csv
       md5: b24080f15b4d90855cfe7bba39391780
       size: 2840574
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/train_data.csv
+      md5: b24080f15b4d90855cfe7bba39391780
+      size: 2840574
+    - path: src/train.py
+      md5: ceb12fdff54f40a6468984add80c149f
+      size: 4748
+    params:
+      params.yaml:
+        train.categorical_features:
+        - workclass
+        - education
+        - marital-status
+        - occupation
+        - relationship
+        - race
+        - sex
+        - native-country
+        train.label: salary
+        train.learning_rate: 0.1
+        train.loss: log_loss
+        train.max_depth: 10
+        train.model: models/census_model_v1
+        train.random_state: 24
+    outs:
+    - path: models/census_model_v1
+      md5: d402466c07a73542f408f8e4935ad6d9
+      size: 312368
